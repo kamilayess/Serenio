@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Check</title>
+  <link rel="stylesheet" href="design.css" />
+  <a href="index.html" class="back-button">← Back to Home</a>
+  <style>
+    body {
+      background-color: #e7ccfa;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .mood-buttons button {
+      margin: 10px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .happy { background-color: #a2e3a2; }
+    .sad { background-color: #f7a2a2; }
+    .angry { background-color: #f77f7f; }
+    .calm { background-color: #9ed9f7; }
+    .anxious { background-color: #d2a2f7; }
+
+    .message {
+      margin-top: 40px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4c4c4c;
+    }
+  </style>
+</head>
+<body>
+  <h1>How are you feeling today?</h1>
+
+  <div class="mood-buttons">
+    <button class="happy" onclick="showMessage('happy')">😊 Joy</button>
+    <button class="sad" onclick="showMessage('sad')">😢 Sadness</button>
+    <button class="angry" onclick="showMessage('angry')">😡 Angry</button>
+    <button class="calm" onclick="showMessage('calm')">😌 Calm</button>
+    <button class="anxious" onclick="showMessage('anxious')">😰 Anxious</button>
+  </div>
+
+  <div class="message" id="responseMessage"></div>
+
+  <script>
+    function showMessage(mood) {
+      const msg = document.getElementById('responseMessage');
+      if (mood === 'happy') {
+        msg.textContent = 'That’s wonderful! Have an amazing day ahead! 💛';
+      } else if (mood === 'sad') {
+        msg.textContent = 'It’s okay to feel sad. Maybe talk to SerenioAI for support 💬';
+      } else if (mood === 'angry') {
+        msg.textContent = 'Take a deep breath. You can let it out safely. SerenioAI is here if needed 💡';
+      } else if (mood === 'calm') {
+        msg.textContent = 'Beautiful. Enjoy the peace and take care 🌿';
+      } else if (mood === 'anxious') {
+        msg.textContent = 'You’re not alone. Talk to SerenioAI — it might help 🫂';
+      }
+    }
+  </script>
+</body>
+</html>

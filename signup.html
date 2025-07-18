@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="design.css" />
+  <title>Sign Up - Serenio</title>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Sign up</h2>
+    <input type="email" id="signup-email" placeholder="Email" />
+    <input type="password" id="signup-password" placeholder="Password" />
+    <button id="signup-btn">Create Account</button>
+    <p>Already have an account? <a href="login.html">Log in</a></p>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB4TFINYI6G7FsW-ptsG25GrpJE-QEZdGg",
+      authDomain: "serenio-2cdc4.firebaseapp.com",
+      projectId: "serenio-2cdc4",
+      storageBucket: "serenio-2cdc4.firebasestorage.app",
+      messagingSenderId: "611283595390",
+      appId: "1:611283595390:web:4b8c3d71cd19bf2086682f",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById('signup-btn').addEventListener('click', () => {
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          window.location.href = "index.html"; // перекидывает после регистрации
+        })
+        .catch(error => {
+          alert("Error: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>
